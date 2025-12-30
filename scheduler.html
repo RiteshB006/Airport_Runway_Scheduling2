@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Runway Scheduler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Runway Scheduling Simulator</h1>
+</header>
+
+<section class="card">
+    <h2>Add Flight</h2>
+    <input type="text" id="fid" placeholder="Flight ID">
+    <input type="number" id="start" placeholder="Start Time">
+    <input type="number" id="end" placeholder="End Time">
+    <button onclick="addFlight()">Add Flight</button>
+</section>
+
+<section class="card">
+    <h2>Flights List</h2>
+    <ul id="flightList"></ul>
+    <button onclick="schedule()">Run Scheduling Algorithm</button>
+</section>
+
+<section class="card">
+    <h2>Scheduled Flights</h2>
+    <ul id="result"></ul>
+</section>
+
+<section class="card">
+    <h2>Search Engine</h2>
+    <input type="text" id="searchId" placeholder="Search by Flight ID">
+    <button onclick="searchFlight()">Search</button>
+    <p id="searchResult"></p>
+</section>
+
+<div class="center">
+    <a href="Airport2.html" class="btn">⬅ Back to Home</a>
+</div>
+
+<script src="scriptt.js"></script>
+</body>
+</html>

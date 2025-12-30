@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Airport Runway Scheduling</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Airport Runway Scheduling</h1>
+    <p>Design and Analysis of Algorithms – Greedy Algorithm</p>
+</header>
+
+<section class="card">
+    <h2>Problem Statement</h2>
+    <p>
+        Airports have limited runways and multiple flights request landing or takeoff during specific
+        time intervals. If two flights overlap on the same runway, it leads to delays and safety issues.
+        The objective is to schedule the maximum number of non-overlapping flights.
+    </p>
+</section>
+
+<section class="card">
+    <h2>Need for Algorithmic Solution</h2>
+    <ul>
+        <li>Manual scheduling causes conflicts</li>
+        <li>Checking all combinations is inefficient</li>
+        <li>Algorithm ensures optimal and fast scheduling</li>
+    </ul>
+</section>
+
+<section class="card">
+    <h2>Solution Approach</h2>
+    <p>
+        We use the <b>Greedy Algorithm (Activity Selection / Interval Scheduling)</b> which selects
+        flights based on earliest finishing time to maximize runway utilization.
+    </p>
+</section>
+
+<section class="card">
+    <h2>Algorithm: Airport Runway Scheduling (Greedy Interval Scheduling)</h2>
+    <ol>
+        <li>Sort all flights in non-decreasing order of their ending times</li>
+        <li>Select the first flight (the one with the earliest finishing time)</li>
+        <li>Let <b>lastEnd</b> = ending time of the selected flight</li>
+        <li>For each remaining flight (in sorted order):</li>
+        <ul>
+            <li>If start[i] ≥ lastEnd:</li>
+            <ul>
+                <li>Select the flight</li>
+                <li>Update lastEnd = end[i]</li>
+            </ul>
+        </ul>
+        <li>Stop when all flights are processed</li>
+        <li>Output the selected flights</li>
+    </ol>
+</section>
+
+<section class="card">
+    <h2>Pseudocode</h2>
+<pre>
+ActivitySelection(start[], end[], n)
+{
+    sort activities by end time
+
+    select first activity
+    lastEnd = end[0]
+
+    for i = 1 to n-1
+        if start[i] >= lastEnd
+            select activity i
+            lastEnd = end[i]
+}
+</pre>
+</section>
+
+<section class="card">
+    <h2>C++ Implementation (Greedy Algorithm)</h2>
+<pre>
+#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+struct Flight {
+    string id;
+    int start;
+    int end;
+};
+
+bool compareFlights(Flight a, Flight b) {
+    return a.end &lt; b.end;
+}
+
+void runwayScheduling(Flight flights[], int n) {
+    sort(flights, flights + n, compareFlights);
+
+    int lastEnd = -1;
+    int count = 0;
+
+    cout &lt;&lt; "Scheduled Flights:\n";
+
+    for (int i = 0; i &lt; n; i++) {
+        if (flights[i].start &gt;= lastEnd) {
+            cout &lt;&lt; flights[i].id &lt;&lt; " (" 
+                 &lt;&lt; flights[i].start &lt;&lt; " - " 
+                 &lt;&lt; flights[i].end &lt;&lt; ")\n";
+            lastEnd = flights[i].end;
+            count++;
+        }
+    }
+
+    cout &lt;&lt; "Total flights scheduled: " &lt;&lt; count;
+}
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+
+    Flight flights[n];
+
+    for (int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; flights[i].id
+            &gt;&gt; flights[i].start
+            &gt;&gt; flights[i].end;
+    }
+
+    runwayScheduling(flights, n);
+    return 0;
+}
+</pre>
+</section>
+
+<div class="center">
+    <a href="scheduler.html" class="btn">▶ Implement Algorithm</a>
+</div>
+
+<footer>
+    <p>DAA Project – Airport Runway Scheduling</p><br>
+    <p>Team: <br>Ritesh Banagar<br>
+             Sanjay M  <br>
+             Vivek Gudi<br>
+             Guru Ladwa<br>
+     </p>        
+</footer>
+
+</body>
+</html>
+
