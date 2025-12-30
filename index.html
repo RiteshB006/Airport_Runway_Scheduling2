@@ -31,11 +31,64 @@
 </section>
 
 <section class="card">
+    <h2>Users / Stakeholders</h2>
+    <ul>
+        <li><b>Air Traffic Controllers (ATC)</b>: Manage runway assignments safely</li>
+        <li><b>Airport Operations Team</b>: Coordinates arrivals and departures</li>
+        <li><b>Airlines / Pilots</b>: Need predictable schedules for flights</li>
+        <li><b>Passengers</b>: Benefit from reduced delays</li>
+        <li><b>Airport Management</b>: Monitors runway utilization and efficiency</li>
+        <li><b>Regulatory Authorities</b>: Ensure compliance with aviation safety regulations</li>
+    </ul>
+</section>
+
+<section class="card">
     <h2>Solution Approach</h2>
     <p>
         We use the <b>Greedy Algorithm (Activity Selection / Interval Scheduling)</b> which selects
         flights based on earliest finishing time to maximize runway utilization.
     </p>
+</section>
+
+<section class="card">
+    <h2>Detailed Algorithm Explanation</h2>
+    <p>
+        The Greedy algorithm works as follows:
+    </p>
+    <ol>
+        <li>
+            <b>Sorting:</b> First, all flights are sorted according to their ending times in ascending order. 
+            This ensures that flights finishing earlier are considered first, leaving maximum time for subsequent flights.
+        </li>
+        <li>
+            <b>Selection:</b> The flight with the earliest finishing time is always selected as the first flight. 
+            This is the “greedy choice” which ensures optimal usage of the runway.
+        </li>
+        <li>
+            <b>Checking overlap:</b> For each subsequent flight, the algorithm checks if its starting time is greater than 
+            or equal to the ending time of the last selected flight. If yes, the flight is selected; otherwise, it is skipped.
+        </li>
+        <li>
+            <b>Repeat:</b> This process continues until all flights have been considered.
+        </li>
+        <li>
+            <b>Result:</b> The selected set of flights will always contain the maximum possible number of non-overlapping flights.
+        </li>
+    </ol>
+    <p>
+        This algorithm guarantees an optimal solution because selecting the earliest finishing flight maximizes the remaining 
+        time for scheduling other flights, which is the key property of Greedy algorithms.
+    </p>
+</section>
+
+<section class="card">
+    <h2>Why Greedy Algorithm?</h2>
+    <ul>
+        <li>Always selects the next flight that finishes earliest and doesn’t overlap with previous flights</li>
+        <li>Guaranteed to schedule the maximum number of non-overlapping flights</li>
+        <li>Time complexity: <b>O(n log n)</b> (sorting flights + selection)</li>
+        <li>Efficient for real-world airport operations requiring quick scheduling</li>
+    </ul>
 </section>
 
 <section class="card">
@@ -146,4 +199,5 @@ int main() {
 
 </body>
 </html>
+
 
